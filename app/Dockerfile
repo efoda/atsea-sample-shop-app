@@ -12,7 +12,8 @@ COPY . .
 RUN mvn -B -s /usr/share/maven/ref/settings-docker.xml package -DskipTests
 
 FROM openjdk
-RUN adduser -D /home/gordon gordon
+#RUN adduser -D /home/gordon gordon
+RUN usermod -aG gordon $user 
 WORKDIR /static
 COPY --from=storefront /usr/src/atsea/app/react-app/build/ .
 WORKDIR /app
