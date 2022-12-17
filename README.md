@@ -1,3 +1,11 @@
+My edits on the original app:
+1. In the Dockerfiles, I changed the image Java to JDK because Java is depricated.
+2. In docker-compose.yml, I changed the specifications of the network: payemt and added "attachable: true" because I recevied an error that it's not attachable by default.
+3. In the Dockerfile of the app service, I added "RUN groupadd -r gordon && useradd -r -g gordon gordon
+USER gordon" to resolve the user and passwrord errors.
+4. In the Dockerfile of the database service, I hashed the configuration files to disable the monitoring because it generates "incomplete startup packets" for the postgres. However, it didn't work. The containers of the app and the database exit instantly after being up and running.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 ![](atsea_store.png)
 #  AtSea Shop Demonstration Application
 
