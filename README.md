@@ -1,9 +1,21 @@
-My edits on the original app:
+**My edits on the original app:**
 1. In the Dockerfiles, I changed the image Java to JDK because Java is depricated.
 2. In docker-compose.yml, I changed the specifications of the network: payemt and added "attachable: true" because I recevied an error that it's not attachable by default.
 3. In the Dockerfile of the app service, I added "RUN groupadd -r gordon && useradd -r -g gordon gordon
 USER gordon" to resolve the user and passwrord errors.
 4. In the Dockerfile of the database service, I hashed the configuration files to disable the monitoring because it generates "incomplete startup packets" for the postgres. However, it didn't work. The containers of the app and the database exit instantly after being up and running.
+
+
+These are the steps I followed to try the application Docker Playground:
+1. git clone https://github.com/efoda/atsea-sample-shop-app
+2. cd atsea-sample-shop-app/
+3. docker swarm init
+4. mkdir certs
+5. openssl req -newkey rsa:4096 -nodes -sha256 -keyout certs/domain.key -x509 -days 365 -out certs/domain.crt
+6.docker secret create revprox_cert certs/domain.crt
+7. docker secret create revprox_key certs/domain.key
+8. docker secret create postgres_password certs/domain.key
+9. docker-compose up --build
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ![](atsea_store.png)
