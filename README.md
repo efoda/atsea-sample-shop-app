@@ -10,6 +10,8 @@ I added some proxy_host overrides to avoid this message. HOwever, the error mess
 Therefore, I changed the port 443 to 81 because 443 is an HTTPS port. It works now elhamdleAllah!
 6.I built the reverse proxy image upon this new conf file and pushed to my hub.docker.com as engyfouda/atseasampleshopapp_reverse_proxy.
 I updated the docker-stack.yml with this new image.
+7.I updated the reverse_proxy service in the docker-stack.yml file with my working image, engyfouda/atseasampleshopapp_reverse_proxy, and changed the HTTPS port to HTTP port.
+8. Also, when use this app with Docker UCP, there was a conflict in the ports as both use port 443 at the host. Therefore I changed the host post to 8002 and the container port to 81 which is an HTTP port, not HTTPS port in the docker-stack.yml file.
 
 
 These are the steps I followed to try the application Docker Playground:
@@ -21,7 +23,8 @@ These are the steps I followed to try the application Docker Playground:
 6.docker secret create revprox_cert certs/domain.crt
 7. docker secret create revprox_key certs/domain.key
 8. docker secret create postgres_password certs/domain.key
-9. docker-compose up --build
+9. echo staging | docker secret create staging_token - 
+10. docker stack deploy -c docker-stack.yml atsea
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ![](atsea_store.png)
