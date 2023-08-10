@@ -2,10 +2,10 @@ version: "3.2"
 
 services:
   reverse_proxy:
-    image: dockersamples/atseasampleshopapp_reverse_proxy
+    image: engyfouda/atseasampleshopapp_reverse_proxy
     ports:
-      - "80:80"
-      - "443:443"
+      - "82:80"
+      - "8002:81"
     secrets:
       - source: revprox_cert
         target: revprox_cert
