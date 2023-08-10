@@ -19,8 +19,8 @@ I updated the docker-stack.yml with this new image.
 1.Create two nodes and connect them on a swarm. Run "$ docker swarm init" on the first node. Copy the generated token and run it on the second node.
 2. git clone https://github.com/efoda/atsea-sample-shop-app
 3. cd atsea-sample-shop-app/
-5. mkdir certs
-6. openssl req -newkey rsa:4096 -nodes -sha256 -keyout certs/domain.key -x509 -days 365 -out certs/domain.crt
+4. mkdir certs
+5. openssl req -newkey rsa:4096 -nodes -sha256 -keyout certs/domain.key -x509 -days 365 -out certs/domain.crt
 6.docker secret create revprox_cert certs/domain.crt
 7. docker secret create revprox_key certs/domain.key
 8. docker secret create postgres_password certs/domain.key
