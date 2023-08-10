@@ -4,6 +4,12 @@
 3. In the Dockerfile of the app service, I added "RUN groupadd -r gordon && useradd -r -g gordon gordon
 USER gordon" to resolve the user and passwrord errors.
 4. In the Dockerfile of the database service, I hashed the configuration files to disable the monitoring because it generates "incomplete startup packets" for the postgres. However, it didn't work. The containers of the app and the database exit instantly after being up and running.
+5. I was getting in the container logs that "The ssl directive is deprecated," so I removed it from ./reverse-proxy/nginx.conf file.
+Then I got the error message that "the plain http request was sent to https port nginx."
+I added some proxy_host overrides to avoid this message. HOwever, the error message persisted.
+Therefore, I changed the port 443 to 81 because 443 is an HTTPS port. It works now elhamdleAllah!
+6.I built the reverse proxy image upon this new conf file and pushed to my hub.docker.com as engyfouda/atseasampleshopapp_reverse_proxy.
+I updated the docker-stack.yml with this new image.
 
 
 These are the steps I followed to try the application Docker Playground:
