@@ -35,6 +35,7 @@ I updated the docker-stack.yml with this new image.
 9. echo staging | docker secret create staging_token - 
 
 10. docker stack deploy -c docker-stack.yml atsea
+11. connect to http://localhost:8002 or the http://<UCP node IP>:8002
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ![](atsea_store.png)
