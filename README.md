@@ -14,7 +14,8 @@ I updated the docker-stack.yml with this new image.
 8. Also, when use this app with Docker UCP, there was a conflict in the ports as both use port 443 at the host. Therefore I changed the host post to 8002 and the container port to 81 which is an HTTP port, not HTTPS port in the docker-stack.yml file.
 
 
-These are the steps I followed to try the application Docker Playground:
+**These are the steps I followed to try the application Docker Playground:**
+
 1.Create two nodes and connect them on a swarm. Run "$ docker swarm init" on the first node. Copy the generated token and run it on the second node.
 2. git clone https://github.com/efoda/atsea-sample-shop-app
 3. cd atsea-sample-shop-app/
