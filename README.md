@@ -36,6 +36,7 @@ I updated the docker-stack.yml with this new image.
 
 10. docker stack deploy -c docker-stack.yml atsea
 11. connect to http://localhost:8002 or the http://<UCP node IP>:8002
+    Note: please wait a couple of minutes and the keep refreshing. At first, it'll give 502 bad gateway, but after few seconds the Atsea store will work.
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ![](atsea_store.png)
