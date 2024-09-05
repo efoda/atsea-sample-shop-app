@@ -15,7 +15,7 @@ services:
       - front-tier
 
   database:
-    image: dockersamples/atsea_db
+    image: engyfouda/atsea_db
     environment:
       POSTGRES_USER: gordonuser
       POSTGRES_DB_PASSWORD_FILE: /run/secrets/postgres_password
@@ -30,7 +30,7 @@ services:
           - 'node.role == worker'
 
   appserver:
-    image: dockersamples/atsea_app
+    image: engyfouda/atsea_app
     networks:
       - front-tier
       - back-tier
@@ -52,7 +52,7 @@ services:
       - postgres_password
 
   visualizer:
-    image: dockersamples/visualizer:stable
+    image: engyfouda/visualizer:stable
     ports:
       - "8001:8080"
     stop_grace_period: 1m30s
@@ -66,7 +66,7 @@ services:
           - 'node.role == manager'
 
   payment_gateway:
-    image: dockersamples/atseasampleshopapp_payment_gateway
+    image: engyfouda/atseasampleshopapp_payment_gateway
     secrets:
       - source: staging_token
         target: payment_token
