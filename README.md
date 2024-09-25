@@ -8,10 +8,11 @@ USER gordon" to resolve the user and passwrord errors.
 Then I got the error message that "the plain http request was sent to https port nginx."
 I added some proxy_host overrides to avoid this message. HOwever, the error message persisted.
 Therefore, I changed the port 443 to 81 because 443 is an HTTPS port. It works now elhamdleAllah!
-6.I built the reverse proxy image upon this new conf file and pushed to my hub.docker.com as engyfouda/atseasampleshopapp_reverse_proxy.
+6. I built the reverse proxy image upon this new conf file and pushed to my hub.docker.com as engyfouda/atseasampleshopapp_reverse_proxy.
 I updated the docker-stack.yml with this new image.
-7.I updated the reverse_proxy service in the docker-stack.yml file with my working image, engyfouda/atseasampleshopapp_reverse_proxy, and changed the HTTPS port to HTTP port.
+7. I updated the reverse_proxy service in the docker-stack.yml file with my working image, engyfouda/atseasampleshopapp_reverse_proxy, and changed the HTTPS port to HTTP port.
 8. Also, when use this app with Docker UCP, there was a conflict in the ports as both use port 443 at the host. Therefore I changed the host post to 8002 and the container port to 81 which is an HTTP port, not HTTPS port in the docker-stack.yml file.
+9. I updated aall the images that are in the docker-stack.yml with images that I built and pushed to my hub.docker.com account as many of these images sometimes get moved or removed or not able to download them because of the vulnerabilities on the official images. 
 
 
 **These are the steps I followed to try the application Docker Playground:**
