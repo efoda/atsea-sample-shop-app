@@ -12,7 +12,8 @@ Therefore, I changed the port 443 to 81 because 443 is an HTTPS port. It works n
 I updated the docker-stack.yml with this new image.
 7. I updated the reverse_proxy service in the docker-stack.yml file with my working image, engyfouda/atseasampleshopapp_reverse_proxy, and changed the HTTPS port to HTTP port.
 8. Also, when use this app with Docker UCP, there was a conflict in the ports as both use port 443 at the host. Therefore I changed the host post to 8002 and the container port to 81 which is an HTTP port, not HTTPS port in the docker-stack.yml file.
-9. I updated aall the images that are in the docker-stack.yml with images that I built and pushed to my hub.docker.com account as many of these images sometimes get moved or removed or not able to download them because of the vulnerabilities on the official images. 
+9. I updated aall the images that are in the docker-stack.yml with images that I built and pushed to my hub.docker.com account as many of these images sometimes get moved or removed or not able to download them because of the vulnerabilities on the official images.
+10. In the /app/Dockerfile, I edited the node image to one that I pushed to my hub account as the official node image was removed. Therefore, trying docker-compose up was failing when building this image because docker daemon cant pull the official image.
 
 
 **These are the steps I followed to try the application Docker Playground:**
